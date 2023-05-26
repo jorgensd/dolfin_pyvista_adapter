@@ -21,7 +21,11 @@ jobs:
     container: ghcr.io/scientificcomputing/fenics-gmsh:2023-04-21
 
     steps:
-      
+      - name: Install xvfb from apt
+        run: |
+         apt-get update
+         apt-get install -y libgl1-mesa-glx xvfb
+
 
       - uses: actions/checkout@v3
 
