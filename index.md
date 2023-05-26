@@ -1,6 +1,6 @@
 # dolfin_pyvista_adapter
 
-Welcome to the webpage of dolfin_pyvista_adapter
+Adapter for Pyvista for arbitrary order (discontinuous) Lagrange with Legacy Dolfin. 
 
 ## Contents
 ```{tableofcontents}
