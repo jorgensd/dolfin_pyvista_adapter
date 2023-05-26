@@ -44,7 +44,7 @@ def create_vtk_structures(
 
     num_cells = mesh.num_cells()
     if num_cells == 0:
-        return
+        return np.zeros(0, dtype=np.int32), np.zeros(0, dtype=np.int32), np.zeros((0,3),dtype=np.float64)
     d_cell = mesh.ufl_cell()
 
     if d_cell == vertex:
