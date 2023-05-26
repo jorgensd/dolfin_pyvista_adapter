@@ -28,7 +28,8 @@ env:
 jobs:
 
   build:
-    runs-on: ghcr.io/scientificcomputing/fenics-gmsh:2023-04-21
+    runs-on: ubuntu-latest
+    container: ghcr.io/scientificcomputing/fenics-gmsh:2023-04-21
     env:
       PYVISTA_JUPYTER_BACKEND: "panel"
     steps:

@@ -16,7 +16,8 @@ on:
 
 jobs:
   check-code:
-    runs-on: ghcr.io/scientificcomputing/fenics-gmsh:2023-04-21
+    runs-on: ubuntu-latest
+    container: ghcr.io/scientificcomputing/fenics-gmsh:2023-04-21
 
     steps:
       # This action sets the current path to the root of your github repo
