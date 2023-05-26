@@ -34,3 +34,9 @@ jobs:
 
       - name: Run tests
         run: python3 -m pytest
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test_results
+          path: test_figures
+          retention-days: 3
