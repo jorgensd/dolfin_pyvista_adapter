@@ -27,3 +27,23 @@ def test_plot_scalar_3D(testing_dir):
     u.interpolate(dolfin.Expression("x[0]+3*x[1]+2", degree=1))
     filename = testing_dir / "scalar.png"
     plot(u, filename=filename, show_edges=True)
+
+
+# Test if matplotlib colormaps work
+def test_plot_scalar_3D_cmap(testing_dir):
+    mesh = dolfin.UnitCubeMesh(2, 2, 2)
+    V = dolfin.FunctionSpace(mesh, "Lagrange", 2)
+    u = dolfin.Function(V)
+    u.interpolate(dolfin.Expression("x[0]+3*x[1]+2", degree=1))
+    filename = testing_dir / "scalar_cmap.png"
+    plot(u, filename=filename, show_edges=True, cmap="inferno")
+
+
+# Test if custom colormap works
+def test_plot_scalar_3D_custom_cmap(testing_dir):
+    mesh = dolfin.UnitCubeMesh(2, 2, 2)
+    V = dolfin.FunctionSpace(mesh, "Lagrange", 2)
+    u = dolfin.Function(V)
+    u.interpolate(dolfin.Expression("x[0]+3*x[1]+2", degree=1))
+    filename = testing_dir / "scalar_custom_cmap.png"
+    plot(u, filename=filename, show_edges=True, cmap=["red", "blue", "green"])
