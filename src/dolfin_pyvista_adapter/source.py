@@ -1,7 +1,7 @@
 import dolfin
 import pyvista
 from ufl import vertex
-from typing import Tuple
+from typing import Tuple, Union, List
 import numpy.typing as npt
 import numpy as np
 import pathlib
@@ -96,6 +96,7 @@ def plot(
     show_edges: bool = True,
     glyph_factor: float = 1,
     off_screen: bool = True,
+    cmap: Union[str, List[str]] = "viridis",
 ):
     """
     Plot a (discontinuous) Lagrange function with Pyvista
@@ -106,6 +107,7 @@ def plot(
     :param glyph_factor: Scaling of glyphs if input function is a function from a
       ``dolfin.VectorFunctionSpace``.
     :param off_screen: If ``True`` generate plots with virtual frame buffer using ``xvfb``.
+    :param cmap: The colormap to use. If a string uses matplotlib colormaps, if a list uses strings as colors.
     """
     Vh = uh.function_space()
 
@@ -140,16 +142,16 @@ def plot(
         t1, c1, x1 = create_vtk_structures(P1)
         p1_grid = pyvista.UnstructuredGrid(t1, c1, x1)
         if bs > 1:
-            plotter.add_mesh(p1_grid, show_edges=show_edges)
+            plotter.add_mesh(p1_grid, show_edges=show_edges, cmap=cmap)
         else:
-            plotter.add_mesh(grid)
-            plotter.add_mesh(p1_grid, style="wireframe")
+            plotter.add_mesh(grid, cmap=cmap)
+            plotter.add_mesh(p1_grid, style="wireframe", cmap=cmap)
     else:
-        plotter.add_mesh(grid, show_edges=show_edges)
+        plotter.add_mesh(grid, show_edges=show_edges, cmap=cmap)
 
     if bs > 1:
         glyphs = grid.glyph(orient=uh.name(), factor=glyph_factor)
-        plotter.add_mesh(glyphs)
+        plotter.add_mesh(glyphs, cmap=cmap)
     print(filename)
     if filename is None:
         plotter.show()
