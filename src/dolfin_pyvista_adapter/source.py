@@ -107,7 +107,8 @@ def plot(
     :param glyph_factor: Scaling of glyphs if input function is a function from a
       ``dolfin.VectorFunctionSpace``.
     :param off_screen: If ``True`` generate plots with virtual frame buffer using ``xvfb``.
-    :param cmap: The colormap to use. If a string uses matplotlib colormaps, if a list uses strings as colors.
+    :param cmap: The colormap to use. If a string uses matplotlib colormaps,
+      if a list uses strings as colors.
     """
     Vh = uh.function_space()
 
