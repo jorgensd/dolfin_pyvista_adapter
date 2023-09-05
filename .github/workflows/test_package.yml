@@ -27,7 +27,7 @@ jobs:
          apt-get install -y libgl1-mesa-glx xvfb
 
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install package
         run: pip install .[test]
